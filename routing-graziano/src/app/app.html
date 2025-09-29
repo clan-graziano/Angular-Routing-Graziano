@@ -1,0 +1,80 @@
+<div class="container py-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm rounded mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+        <span style="font-size:2rem; animation: spin 2s linear infinite;">🏠️</span>
+        <span>Graziano Routing</span>
+      </a>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center gap-2">
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-1" routerLink="/animals" routerLinkActive="active-menu">
+            <span style="font-size:1.2rem;">🦁</span> Animals
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-1" routerLink="/fruits" routerLinkActive="active-menu">
+            <span style="font-size:1.2rem;">🍎</span> Fruits
+          </a>
+        </li>
+        <li><span class="vr mx-2"></span></li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-1" routerLink="/generic/vehicles" routerLinkActive="active-menu">
+            <span style="font-size:1.2rem;">🚗</span> Generic Vehicles
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-1" routerLink="/generic/sports" routerLinkActive="active-menu">
+            <span style="font-size:1.2rem;">⚽</span> Generic Sports
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-1" routerLink="/generic/animals" routerLinkActive="active-menu">
+            <span style="font-size:1.2rem;">✨🦁</span> Generic Animals
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-1" routerLink="/generic/fruits" routerLinkActive="active-menu">
+            <span style="font-size:1.2rem;">✨🍎</span> Generic Fruits
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="bg-white shadow-sm rounded text-center py-3 mt-4">
+    <span class="fw-semibold">
+      <span style="font-size:1.3rem;">🚀</span> Powered by Graziano Routing &nbsp;|&nbsp; <span style="color:#0d6efd;">Enjoy your navigation!</span>
+    </span>
+  </footer>
+</div>
+<style>
+  .active-menu {
+    font-weight: bold;
+    color: #0d6efd !important;
+    border-bottom: 2px solid #0d6efd;
+    background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(13,110,253,0.08);
+    transition: all 0.2s;
+  }
+  .navbar-brand span {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+  .navbar {
+    background: linear-gradient(90deg, #e0eafc 0%, #cfdef3 100%);
+    border-radius: 16px;
+  }
+  .vr {
+    border-left: 2px solid #0d6efd;
+    height: 32px;
+    margin: 0 8px;
+    opacity: 0.3;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
