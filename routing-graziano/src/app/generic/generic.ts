@@ -29,4 +29,5 @@ export class Generic{
   if (uri_param == 'vehicles') this.genVect = VEHICLES;
   if (uri_param == 'sports') this.genVect = SPORTS;
   }
+  
 }
