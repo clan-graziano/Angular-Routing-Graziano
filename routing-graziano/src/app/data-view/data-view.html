@@ -1,0 +1,38 @@
+<div class="container py-3">
+  <h2 class="clash-title">⚔️⭐️Clash Royale⭐️⚔️</h2>
+  <div class="clash-separator">
+    <span class="clash-separator-icon">⭐️</span>
+    <span class="clash-separator-line"></span>
+    <span class="clash-separator-icon">⚔️</span>
+  </div>
+  @if (data && isArray(data)) {
+    <div class="unit-list">
+  @for (item of data; track item) {
+        <div class="unit-card">
+          <div class="unit-tooltip" [ngClass]="{ 'tooltip-bottom': $index < 6, 'tooltip-top': $index >= 6 }">
+            @for (key of getOtherKeys(item); track key) {
+              <div><strong>{{ key }}:</strong> {{ item[key] }}</div>
+            }
+          </div>
+          @if (item.ImageUrl) {
+            <img [src]="{{serverURI}}'/' + item.ImageUrl" alt="Unit image" class="unit-img" (error)="item.imgError = true" />
+          }
+          @if (!item.ImageUrl) {
+            <div class="img-error">Immagine inesistente</div>
+          }
+          @if (item.ImageUrl && item.imgError) {
+            <div class="img-error">Immagine non disponibile</div>
+          }
+          <hr class="unit-separator" />
+          <span class="unit-title">{{ item.Unit }}</span>
+        </div>
+      }
+    </div>
+  }
+  @if (data && !isArray(data)) {
+    <pre>{{ data | json }}</pre>
+  }
+  @if (!data) {
+    <p>Nessun dato disponibile.</p>
+  }
+</div>

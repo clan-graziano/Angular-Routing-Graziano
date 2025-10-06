@@ -1,0 +1,133 @@
+/* Linea decorativa sotto il titolo Clash Royale */
+.clash-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 0.5rem;
+}
+.clash-separator-line {
+  width: 180px;
+  height: 4px;
+  background: linear-gradient(90deg, #f9ca24 0%, #0984e3 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+}
+.clash-separator-icon {
+  font-size: 1.7rem;
+  filter: drop-shadow(0 1px 2px #636e72);
+}
+/* Titolo centrato */
+.clash-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.img-error {
+  color: #d63031;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.unit-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 1px 6px rgba(44,62,80,0.10);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.unit-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+  padding: 2rem 1rem 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 180px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #34495e;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  overflow: visible;
+}
+.unit-card:hover {
+  box-shadow: 0 6px 24px rgba(44,62,80,0.16);
+  border-color: #0984e3;
+  color: #0984e3;
+}
+.unit-tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  min-width: 200px;
+  background: #f8f9fa;
+  color: #2d3436;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.12);
+  padding: 1rem;
+  z-index: 10;
+  font-size: 1rem;
+  pointer-events: none;
+}
+.unit-card:hover .unit-tooltip {
+  display: block;
+}
+.tooltip-top {
+  top: -10px;
+  transform: translate(-50%, -100%);
+}
+.tooltip-bottom {
+  top: 100%;
+  transform: translate(-50%, 0);
+}
+.unit-separator {
+  width: 80%;
+  border: none;
+  border-top: 2px solid #dfe6e9;
+  margin: 0.7rem 0 0.7rem 0;
+}
+/* Stili base per la visualizzazione dei dati */
+/* Lista di riquadri per Unit */
+/* Griglia ordinata per Unit */
+.unit-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.unit-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #34495e;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.unit-card:hover {
+  box-shadow: 0 6px 24px rgba(44,62,80,0.16);
+  border-color: #0984e3;
+  color: #0984e3;
+}
+.unit-title {
+  display: block;
+  margin: 0 auto;
+  letter-spacing: 0.5px;
+}

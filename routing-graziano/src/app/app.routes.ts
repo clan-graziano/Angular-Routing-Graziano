@@ -4,6 +4,7 @@ import { Fruits } from './fruits/fruits';
 import { NgModule } from '@angular/core';
 import { Generic } from './generic/generic';
 import { Home } from './home/home';
+import { DataViewComponent } from './data-view/data-view';
 
 export const routes: Routes = [
 
@@ -11,6 +12,7 @@ export const routes: Routes = [
     {path: 'fruits', component: Fruits },
     {path: '', component: Home },
     { path: 'generic/:id', component: Generic }
+  ,{ path: 'data-view', component: DataViewComponent }
 ];
 
 @NgModule({
