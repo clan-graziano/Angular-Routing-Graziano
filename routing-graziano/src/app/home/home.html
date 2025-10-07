@@ -1,34 +1,13 @@
-<div class="d-flex justify-content-center align-items-center min-vh-100 home-bg" border-0 rounded-4>
-  <div class="card shadow-lg border-0 rounded-4 p-4 text-center" style="max-width: 400px;">
-    <div class="mb-3">
-      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Welcome" style="width:80px; animation: bounce 1.2s infinite;">
+<div class="cr-home-bg">
+  <div class="cr-home-card">
+    <img src="https://supercell.com/images/53c91cc7ddf17d5b6fa13cae4762af1b/main_logo_clashroyale.5e3fbb70__1_.webp" alt="Clash Royale Logo" class="cr-logo" />
+    <p class="cr-desc">Scopri tutte le carte, le statistiche e le curiosità del mondo di Clash Royale.<br>Seleziona una sezione per iniziare!</p>
+    <div class="cr-menu">
+      <a routerLink="/data-view" class="cr-btn cr-btn-blue">
+        <img src="https://play-lh.googleusercontent.com/gnSC6s8-6Tjc4uhvDW7nfrSJxpbhllzYhgX8y374N1LYvWBStn2YhozS9XXaz1T_Pi2q=s48-rw" class="cr-btn-icon" alt="Carte" />
+        Tutte le Carte
+      </a>
     </div>
-    <h1 class="display-6 mb-2 fw-bold text-primary">Benvenuto su Graziano Routing!</h1>
-    <p class="lead mb-4 text-secondary">Scegli una sezione dal menu per iniziare.</p>
-    <div class="container">
-      <div class="row justify-content-center g-3">
-        <div class="col-6 d-flex justify-content-end">
-          <a routerLink="/animals" routerLinkActive="active-menu" class="btn btn-outline-danger rounded-pill px-4 w-100" href="/generic/animals" >Animals</a>
-        </div>
-        <div class="col-6 d-flex justify-content-start">
-          <a routerLink="/fruits" routerLinkActive="active-menu" class="btn btn-outline-success rounded-pill px-4 w-100" href="/generic/fruits" >Fruits</a>
-        </div>
-        <div class="col-6 d-flex justify-content-end">
-          <a routerLink="/generic/vehicles" routerLinkActive="active-menu" class="btn btn-outline-info rounded-pill px-4 w-100" href="/generic/vehicles" >Vehicles</a>
-        </div>
-        <div class="col-6 d-flex justify-content-start">
-          <a routerLink="/generic/sports" routerLinkActive="active-menu" class="btn btn-outline-dark rounded-pill px-4 w-100" href="/generic/sports" >Sports</a>
-        </div>
-      </div>
-    </div>
+  <div class="cr-footer">Made with <span style="color:#f9ca24;">★</span> by GRAZIANO, MATTIONI e MIHALI</div>
   </div>
 </div>
-<style>
-  .home-bg {
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-10px);}
-  }
-</style>

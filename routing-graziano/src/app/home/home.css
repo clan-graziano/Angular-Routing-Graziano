@@ -1,0 +1,89 @@
+/* Clash Royale themed homepage */
+.cr-home-bg {
+	min-height: 100vh;
+	background: url('https://upload.wikimedia.org/wikipedia/it/2/23/Screenshot_Clash_Royale_2021.jpg') center center/cover no-repeat;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.cr-home-bg::before {
+	content: '';
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	background: rgba(30,42,56,0.65);
+	z-index: 1;
+}
+.cr-home-card {
+	position: relative;
+	z-index: 2;
+}
+.cr-home-card {
+	background: #fffbe6;
+	border-radius: 20px;
+	box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+	padding: 1.2rem 1.1rem 1.1rem 1.1rem;
+	max-width: 290px;
+	width: 100%;
+	text-align: center;
+	position: relative;
+}
+.cr-logo {
+	width: 260px;
+	margin-bottom: 1.2rem;
+	filter: drop-shadow(0 2px 8px #636e72);
+}
+.cr-title {
+	font-family: 'Supercell Magic', 'Arial Black', Arial, sans-serif;
+	font-size: 2.1rem;
+	color: #2363b4;
+	font-weight: 900;
+	margin-bottom: 0.5rem;
+	letter-spacing: 1px;
+	text-shadow: 0 2px 0 #fff, 0 4px 8px #b2bec3;
+}
+.cr-desc {
+	color: #636e72;
+	font-size: 1.1rem;
+	margin-bottom: 2rem;
+}
+.cr-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	margin-bottom: 1.5rem;
+}
+.cr-btn {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.8rem;
+	font-size: 1.15rem;
+	font-weight: 700;
+	padding: 0.85rem 1.2rem;
+	border-radius: 12px;
+	text-decoration: none;
+	box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+	transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+	border: none;
+}
+.cr-btn-blue { background: #2363b4; color: #fff; }
+.cr-btn-blue:hover { background: #1b4a8a; }
+.cr-btn-green { background: #00b894; color: #fff; }
+.cr-btn-green:hover { background: #00916e; }
+.cr-btn-orange { background: #fdcb6e; color: #b76e00; }
+.cr-btn-orange:hover { background: #e1a93b; color: #fff; }
+.cr-btn-purple { background: #6c5ce7; color: #fff; }
+.cr-btn-purple:hover { background: #4834d4; }
+.cr-btn-icon {
+	width: 36px;
+	height: 36px;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 1px 4px rgba(44,62,80,0.10);
+}
+.cr-footer {
+	margin-top: 1.5rem;
+	color: #b2bec3;
+	font-size: 1rem;
+}

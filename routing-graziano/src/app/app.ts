@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, provideHttpClient } from '@angular/common/http'; //QUI
 import { DataViewComponent } from './data-view/data-view';
 import { JsonPipe } from '@angular/common';
+import { serverURI } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,7 @@ export class App {
      //Notifichiamo che stiamo attendendo dei dati
      this.loading = true; 
      //Facciamo una get e otteniamo l'oggetto Observable che attende la risposta
-     this.o = this.http.get('https://super-couscous-jjjxx499xpr9fq9px-5000.app.github.dev/'); //QUI inserisci link
+     this.o = this.http.get(serverURI); //QUI inserisci link
      //Attacchiamo all'Observable o un metodo "observer" che verrà lanciato quando arriva la 
      //risposta
      this.o.subscribe(this.getData);

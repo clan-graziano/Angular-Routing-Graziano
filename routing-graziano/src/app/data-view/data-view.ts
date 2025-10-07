@@ -1,8 +1,10 @@
 // ...existing code...
+// ...existing code...
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { serverURI } from '../app.config';
 
 @Component({
   selector: 'app-data-view',
@@ -12,8 +14,17 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./data-view.css']
 })
 export class DataViewComponent implements OnInit {
-  serverURI = 'https://super-couscous-jjjxx499xpr9fq9px-5000.app.github.dev/';
   placeholderUrl = '/assets/clash_royale_sprites/placeholder.png';
+
+  public serverURI = serverURI;
+
+  getImageUrl(item: any): string {
+    if (!item.image_url) return this.placeholderUrl;
+    // Rimuove slash finale da serverURI e iniziale da image_url, poi concatena
+    const base = this.serverURI.endsWith('/') ? this.serverURI.slice(0, -1) : this.serverURI;
+    const path = item.image_url.startsWith('/') ? item.image_url : '/' + item.image_url;
+    return base + path;
+  }
 
   onImgError(event: Event) {
     const img = event.target as HTMLImageElement;
@@ -31,7 +42,7 @@ export class DataViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.http.get('serverURI')
+    this.http.get(this.serverURI)
       .subscribe((d: any) => {
         if (Array.isArray(d)) {
           this.data = d.sort((a, b) => {

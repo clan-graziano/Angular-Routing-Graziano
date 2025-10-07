@@ -1,9 +1,9 @@
 <div class="container py-3">
   <h2 class="clash-title">⚔️⭐️Clash Royale⭐️⚔️</h2>
   <div class="clash-separator">
-    <span class="clash-separator-icon">⭐️</span>
+    <span class="clash-separator-icon">⚔️⭐️</span>
     <span class="clash-separator-line"></span>
-    <span class="clash-separator-icon">⚔️</span>
+    <span class="clash-separator-icon">⭐️⚔️</span>
   </div>
   @if (data && isArray(data)) {
     <div class="unit-list">
@@ -14,13 +14,13 @@
               <div><strong>{{ key }}:</strong> {{ item[key] }}</div>
             }
           </div>
-          @if (item.ImageUrl) {
-            <img [src]="{{serverURI}}'/' + item.ImageUrl" alt="Unit image" class="unit-img" (error)="item.imgError = true" />
+          @if (item.image_url) {
+          <img [src]="getImageUrl(item)" alt="Unit image" class="unit-img" />
           }
-          @if (!item.ImageUrl) {
+          @if (!item.image_url) {
             <div class="img-error">Immagine inesistente</div>
           }
-          @if (item.ImageUrl && item.imgError) {
+          @if (item.image_url && item.imgError) {
             <div class="img-error">Immagine non disponibile</div>
           }
           <hr class="unit-separator" />
