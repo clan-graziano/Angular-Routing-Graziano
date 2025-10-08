@@ -8,24 +8,12 @@
   @if (data && isArray(data)) {
     <div class="unit-list">
   @for (item of data; track item) {
-        <div class="unit-card">
-          <div class="unit-tooltip" [ngClass]="{ 'tooltip-bottom': $index < 6, 'tooltip-top': $index >= 6 }">
-            @for (key of getOtherKeys(item); track key) {
-              <div><strong>{{ key }}:</strong> {{ item[key] }}</div>
-            }
-          </div>
-          @if (item.image_url) {
-          <img [src]="getImageUrl(item)" alt="Unit image" class="unit-img" />
-          }
-          @if (!item.image_url) {
-            <div class="img-error">Immagine inesistente</div>
-          }
-          @if (item.image_url && item.imgError) {
-            <div class="img-error">Immagine non disponibile</div>
-          }
+        <a class="unit-card" [routerLink]="['/data-view', item.Unit]" style="text-decoration:none; color:inherit; cursor:pointer;">
+          <img *ngIf="item.image_url" [src]="getImageUrl(item)" alt="Unit image" class="unit-img" />
+          <div *ngIf="!item.image_url" class="img-error">Immagine inesistente</div>
           <hr class="unit-separator" />
           <span class="unit-title">{{ item.Unit }}</span>
-        </div>
+        </a>
       }
     </div>
   }

@@ -3,13 +3,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JsonPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { serverURI } from '../app.config';
 
 @Component({
   selector: 'app-data-view',
   standalone: true,
-  imports: [CommonModule, JsonPipe],
+  imports: [CommonModule, JsonPipe, RouterModule],
   templateUrl: './data-view.html',
   styleUrls: ['./data-view.css']
 })
@@ -31,7 +32,7 @@ export class DataViewComponent implements OnInit {
     img.src = this.placeholderUrl;
   }
   getOtherKeys(item: any): string[] {
-    return Object.keys(item).filter(k => k !== 'Unit');
+    return Object.keys(item).filter(k => k !== 'Unit' && k !== 'image_url');
   }
   isArray(val: any): boolean {
     return Array.isArray(val);

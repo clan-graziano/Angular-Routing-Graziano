@@ -1,0 +1,23 @@
+<div class="container py-3">
+  <div class="btn-fab-container">
+    <a routerLink="/data-view" class="btn-fab" routerlink="/data-view" routerlinkactive="active-menu" href="/data-view">
+      <span class="btn-icon">&#8592;</span> Torna alla lista carte
+    </a>
+  </div>
+  <h2 class="clash-title">Dettaglio Carta</h2>
+  <div *ngIf="loading">Caricamento...</div>
+  <div *ngIf="!loading && card">
+    <div class="unit-card">
+      <img *ngIf="card.image_url" [src]="getImageUrl(card)" alt="Unit image" class="unit-img" />
+      <div *ngIf="!card.image_url" class="img-error">Immagine inesistente</div>
+      <hr class="unit-separator" />
+      <span class="unit-title">{{ card.Unit }}</span>
+      <div class="unit-details">
+        <div *ngFor="let key of getOtherKeys(card)"><strong>{{ key }}:</strong> {{ card[key] }}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!loading && !card">
+    <p>Carta non trovata.</p>
+  </div>
+</div>
