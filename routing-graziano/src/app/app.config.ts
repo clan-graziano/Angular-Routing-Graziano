@@ -14,5 +14,5 @@ export const appConfig: ApplicationConfig = {
   ]
 };
 
-export const serverURI = 'https://super-couscous-jjjxx499xpr9fq9px-5000.app.github.dev/'; // Replace with your actual server URI
+export const serverURI = 'https://graziano.pythonanywhere.com/'; // Replace with your actual server URI
   
