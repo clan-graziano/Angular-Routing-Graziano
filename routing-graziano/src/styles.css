@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+/* Responsive helpers */
+html, body, app-root, #root {
+	height: 100%;
+}
+* {
+	box-sizing: border-box;
+}
+img, picture, video {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+.container, .container-fluid {
+	width: 100%;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+/* Utility: responsive grid fallback for small screens */
+.responsive-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+.responsive-col {
+	flex: 1 1 100%;
+}
+
+/* Small devices adjustments */
+@media (max-width: 768px) {
+	body {
+		font-size: 15px;
+	}
+	.navbar .navbar-brand { font-size: 1.1rem; }
+	.btn-fab-container { right: 1rem; bottom: 1rem; }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+	body { font-size: 15.5px; }
+}

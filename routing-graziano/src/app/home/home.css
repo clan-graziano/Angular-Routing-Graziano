@@ -23,13 +23,14 @@
 	border-radius: 20px;
 	box-shadow: 0 8px 32px rgba(44,62,80,0.18);
 	padding: 1.2rem 1.1rem 1.1rem 1.1rem;
-	max-width: 290px;
+	max-width: 420px;
 	width: 100%;
 	text-align: center;
 	position: relative;
 }
 .cr-logo {
-	width: 260px;
+	width: 100%;
+	max-width: 260px;
 	margin-bottom: 1.2rem;
 	filter: drop-shadow(0 2px 8px #636e72);
 }
@@ -86,4 +87,17 @@
 	margin-top: 1.5rem;
 	color: #b2bec3;
 	font-size: 1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+	.cr-home-bg { padding: 2rem 1rem; background-position: center top; }
+	.cr-home-card { padding: 1rem; max-width: 320px; border-radius: 14px; }
+	.cr-title { font-size: 1.6rem; }
+	.cr-desc { font-size: 0.95rem; }
+	.cr-btn { font-size: 1rem; padding: 0.7rem 1rem; }
+}
+
+@media (min-width: 577px) and (max-width: 900px) {
+	.cr-home-card { max-width: 380px; }
 }

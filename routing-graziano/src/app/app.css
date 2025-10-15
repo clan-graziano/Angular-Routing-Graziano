@@ -1,3 +1,15 @@
 li{
     cursor: pointer;
 }
+
+/* Responsive nav and footer tweaks */
+.navbar-brand { white-space: nowrap; }
+.navbar-nav { flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+    .navbar { padding: 0.5rem; }
+    .navbar .navbar-brand { font-size: 1rem; }
+    .navbar-nav { gap: 0.5rem; }
+    .vr { display: none; }
+    footer { font-size: 0.9rem; }
+}

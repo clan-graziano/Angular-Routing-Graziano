@@ -107,6 +107,19 @@
   margin-top: 2rem;
 }
 
+@media (max-width: 576px) {
+  .clash-title { font-size: 1.4rem; }
+  .clash-separator-line { width: 100px; }
+  .unit-list { grid-template-columns: repeat(1, 1fr); gap: 1rem; }
+  .unit-card { padding: 1rem; min-height: 120px; font-size: 1.05rem; }
+  .unit-img { width: 100px; height: auto; }
+}
+
+@media (min-width: 577px) and (max-width: 900px) {
+  .unit-list { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .unit-card { padding: 1.2rem; }
+}
+
 .unit-card {
   background: #fff;
   border: 1px solid #e0e0e0;
