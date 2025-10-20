@@ -8,14 +8,14 @@
 .btn-fab {
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(90deg, #f9ca24 0%, #0984e3 100%);
+  background: linear-gradient(90deg, var(--accent-2) 0%, var(--accent) 100%);
   color: #fff;
   font-size: 1.15rem;
   font-weight: 600;
   padding: 0.7rem 1.5rem;
   border-radius: 30px;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  box-shadow: 0 2px 8px var(--shadow);
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   border: none;
   outline: none;
@@ -24,9 +24,9 @@
 }
 
 .btn-fab:hover {
-  background: linear-gradient(90deg, #0984e3 0%, #f9ca24 100%);
-  color: #222f3e;
-  box-shadow: 0 4px 16px rgba(44,62,80,0.18);
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: var(--bg);
+        box-shadow: 0 4px 16px var(--shadow);
 }
 
 .btn-fab .btn-icon {
@@ -34,10 +34,10 @@
   margin-right: 0.5rem;
 }
 .unit-card {
-  background: #fff;
-  border: 1px solid #e0e0e0;
+  background: var(--surface);
+  border: 1px solid var(--card-border);
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+  box-shadow: 0 2px 12px var(--shadow);
   padding: 2rem 1rem 1.2rem 1rem;
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
   min-height: 180px;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #34495e;
+  color: var(--text);
   margin: 0 auto;
   max-width: 350px;
 }
@@ -55,9 +55,13 @@
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 0.7rem;
-  box-shadow: 0 1px 6px rgba(44,62,80,0.10);
+  box-shadow: 0 1px 6px var(--shadow);
   display: block;
-  background: #fff;
+  background: var(--surface);
+  /* Se l'immagine non carica, evitare che l'alt text sia visibile nelle card */
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
 }
 .unit-title {
   font-size: 1.5rem;
@@ -73,6 +77,15 @@
   font-size: 0.95rem;
   margin-top: 0.5rem;
   text-align: center;
+}
+
+/* Forza il contenitore principale a riempire l'altezza disponibile */
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    margin: 0;
+    padding: 0;
 }
 
 @media (max-width: 576px) {

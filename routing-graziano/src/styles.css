@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* Responsive helpers */
 html, body, app-root, #root {
-	height: 100%;
+	min-height: 100%;
 }
 * {
 	box-sizing: border-box;
@@ -17,6 +17,103 @@ img, picture, video {
 	padding-right: 1rem;
 }
 
+/* Theme variables (light default) */
+:root {
+	--bg: #ffffff;
+	--surface: #ffffff;
+	--text: #222f3e;
+	--muted: #6c7a89;
+	--card-border: #e0e0e0;
+	--accent: #0984e3;
+	--accent-2: #f9ca24;
+	--shadow: rgba(44,62,80,0.08);
+
+	/* Button animation variables */
+	--btn-transition-duration: 180ms;
+	--btn-toggle-transition-duration: 220ms;
+	--btn-transition-easing: ease;
+	--btn-hover-translateY: -4px;
+	--btn-hover-scale: 1.02;
+	--btn-hover-shadow: 0 8px 24px rgba(2,6,23,0.35);
+}
+
+/* Dark theme overrides */
+.dark-theme {
+	--bg: #0f1720; /* page background */
+	--surface: #0b1220; /* cards, panels */
+	--text: #e6eef6;
+	--muted: #98a3b3;
+	--card-border: #1f2a36;
+	--accent: #3aa0ff;
+	--accent-2: #f6b93b;
+	--shadow: rgba(2,6,23,0.7);
+    --btn-hover-shadow: 0 10px 28px rgba(0,0,0,0.6);
+	background-color: var(--bg);
+	color: var(--text);
+}
+
+/* Apply variables globally */
+html, body {
+		background-color: var(--bg) !important;
+		color: var(--text) !important;
+}
+
+/* Ensure the root elements always use the theme background so long pages don't show white gaps */
+html, body, app-root, #root {
+	background: var(--bg) !important;
+	color: var(--text) !important;
+}
+
+/* Make containers transparent so underlying page bg shows through */
+.container, .container-fluid {
+	background: transparent !important;
+}
+
+/* Force card-like elements to use the surface color instead of white */
+.card, .fruit-card, .animal-card, .generic-card, .unit-card, .cr-home-card {
+	background: var(--surface) !important;
+	color: var(--text) !important;
+	border-color: var(--card-border) !important;
+	box-shadow: 0 2px 12px var(--shadow) !important;
+}
+
+/* Smooth theme transition: prefer only on color/ background to avoid repaints for everything */
+:root, html, body, app-root, #root {
+	transition: background-color 300ms ease, color 300ms ease;
+}
+
+/* Also transition common surface elements */
+.card, .fruit-card, .animal-card, .generic-card, .unit-card, .cr-home-card, .navbar, .app-footer {
+	transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, color 300ms ease;
+}
+
+/* Button hover animation: small lift + shadow + subtle scale */
+button, .btn, a.btn, .cr-btn, .theme-btn, .btn-fab, a.unit-card, .unit-card {
+ 	transition: transform var(--btn-transition-duration) var(--btn-transition-easing),
+ 	  box-shadow var(--btn-transition-duration) var(--btn-transition-easing),
+ 	  background-color var(--btn-transition-duration) var(--btn-transition-easing),
+ 	  color var(--btn-transition-duration) var(--btn-transition-easing);
+ 	will-change: transform, box-shadow;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+ 	button:hover, input[type="button"]:hover, input[type="submit"]:hover,
+ 	.btn:hover, a.btn:hover, .cr-btn:hover, .theme-btn:hover, .btn-fab:hover,
+ 	.nav-link:hover, a.unit-card:hover, .unit-card:hover {
+ 		transform: translateY(var(--btn-hover-translateY)) scale(var(--btn-hover-scale)) !important;
+ 		box-shadow: var(--btn-hover-shadow) !important;
+ 	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+ 	button, .btn, a.btn, .cr-btn, .theme-btn, .btn-fab { transition: none !important; }
+}
+
+/* Make default surfaces use surface variable */
+body, app-root {
+	background: var(--bg);
+	color: var(--text);
+}
 /* Utility: responsive grid fallback for small screens */
 .responsive-row {
 	display: flex;

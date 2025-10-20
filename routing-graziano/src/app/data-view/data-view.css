@@ -1,3 +1,10 @@
+/* Forza il contenitore principale a riempire l'altezza disponibile */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* Linea decorativa sotto il titolo Clash Royale */
 .clash-separator {
   display: flex;
@@ -9,9 +16,9 @@
 .clash-separator-line {
   width: 180px;
   height: 4px;
-  background: linear-gradient(90deg, #f9ca24 0%, #0984e3 100%);
+  background: linear-gradient(90deg, var(--accent-2) 0%, var(--accent) 100%);
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 .clash-separator-icon {
   font-size: 1.7rem;
@@ -37,42 +44,126 @@
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 0.7rem;
-  box-shadow: 0 1px 6px rgba(44,62,80,0.10);
+  box-shadow: 0 1px 6px var(--shadow);
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background: #fff;
+  background: var(--surface);
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
 }
+
+/* 🌟 CLASH ROYALE LEGENDARY AURA EFFECT 🌟 */
 .unit-card {
   position: relative;
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(44,62,80,0.08);
-  padding: 2rem 1rem 1.2rem 1rem;
+  background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.05), var(--surface));
+  border: 2px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 180px;
   font-size: 1.3rem;
-  font-weight: 600;
-  color: #34495e;
-  transition: box-shadow 0.2s, border-color 0.2s;
-  overflow: visible;
+  font-weight: 700;
+  color: var(--text);
+  transition: all 0.4s ease;
+  transform: translateY(0);
+  overflow: hidden;
+  z-index: 0;
 }
+
 .unit-card:hover {
-  box-shadow: 0 6px 24px rgba(44,62,80,0.16);
-  border-color: #0984e3;
-  color: #0984e3;
+  transform: translateY(-10px) scale(1.05);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 25px rgba(255, 215, 0, 0.7),
+    0 0 50px rgba(0, 200, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.15);
 }
+
+/* Aura rotante */
+.unit-card::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 215, 0, 0.9),
+    rgba(0, 200, 255, 0.9),
+    rgba(255, 0, 255, 0.7),
+    rgba(255, 215, 0, 0.9)
+  );
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  animation: spinAura 6s linear infinite;
+  z-index: -2;
+}
+.unit-card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Luce interna pulsante */
+.unit-card::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15), transparent 70%);
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: pulseLight 2s ease-in-out infinite alternate;
+  z-index: 1;
+}
+.unit-card:hover::after {
+  opacity: 1;
+}
+
+/* Scintille fluttuanti */
+.unit-card .sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.6);
+  animation: sparkleAnim 1.5s linear infinite;
+}
+
+/* Animazioni */
+@keyframes spinAura {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes pulseLight {
+  from { opacity: 0.4; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.05); }
+}
+@keyframes sparkleAnim {
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  50% { opacity: 1; transform: translateY(-8px) scale(1.3); }
+  100% { opacity: 0; transform: translateY(-16px) scale(0.7); }
+}
+
+/* Tooltip */
 .unit-tooltip {
   display: none;
   position: absolute;
   left: 50%;
   min-width: 200px;
-  background: #f8f9fa;
-  color: #2d3436;
-  border: 1px solid #dfe6e9;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--card-border);
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(44,62,80,0.12);
   padding: 1rem;
@@ -94,12 +185,11 @@
 .unit-separator {
   width: 80%;
   border: none;
-  border-top: 2px solid #dfe6e9;
+  border-top: 2px solid var(--card-border);
   margin: 0.7rem 0 0.7rem 0;
 }
-/* Stili base per la visualizzazione dei dati */
-/* Lista di riquadri per Unit */
-/* Griglia ordinata per Unit */
+
+/* Layout griglia */
 .unit-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -107,6 +197,7 @@
   margin-top: 2rem;
 }
 
+/* Responsività */
 @media (max-width: 576px) {
   .clash-title { font-size: 1.4rem; }
   .clash-separator-line { width: 100px; }
@@ -114,32 +205,11 @@
   .unit-card { padding: 1rem; min-height: 120px; font-size: 1.05rem; }
   .unit-img { width: 100px; height: auto; }
 }
-
 @media (min-width: 577px) and (max-width: 900px) {
   .unit-list { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
   .unit-card { padding: 1.2rem; }
 }
 
-.unit-card {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(44,62,80,0.08);
-  padding: 2rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 80px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #34495e;
-  transition: box-shadow 0.2s, border-color 0.2s;
-}
-.unit-card:hover {
-  box-shadow: 0 6px 24px rgba(44,62,80,0.16);
-  border-color: #0984e3;
-  color: #0984e3;
-}
 .unit-title {
   display: block;
   margin: 0 auto;

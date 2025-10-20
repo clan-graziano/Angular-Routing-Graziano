@@ -39,6 +39,16 @@ export class CardDetailComponent implements OnInit {
   }
 
   getOtherKeys(item: any): string[] {
-    return Object.keys(item).filter(k => k !== 'Unit' && k !== 'image_url');
+    return Object.keys(item).filter(k => {
+      const lowerK = String(k).toLowerCase();
+      // escludi chiavi ovvie
+      if (lowerK === 'unit' || lowerK === 'image_url') return false;
+      // escludi qualsiasi chiave che sembri riferirsi a immagini (immagine, image, img, ecc.)
+      if (lowerK.includes('image') || lowerK.includes('immagine') || lowerK.includes('img')) return false;
+      // escludi valori che puntano alla cartella delle sprite locali
+      const v = item[k];
+      if (typeof v === 'string' && v.includes('assets/clash_royale_sprites')) return false;
+      return true;
+    });
   }
 }

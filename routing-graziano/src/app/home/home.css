@@ -1,11 +1,12 @@
 /* Clash Royale themed homepage */
 .cr-home-bg {
 	min-height: 100vh;
-	background: url('https://upload.wikimedia.org/wikipedia/it/2/23/Screenshot_Clash_Royale_2021.jpg') center center/cover no-repeat;
+	background: url('https://images2.alphacoders.com/112/thumb-1920-1124066.jpg') center center/cover no-repeat;
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-attachment: fixed;
 }
 .cr-home-bg::before {
 	content: '';
@@ -17,44 +18,53 @@
 .cr-home-card {
 	position: relative;
 	z-index: 2;
-}
-.cr-home-card {
-	background: #fffbe6;
+	background: var(--surface);
 	border-radius: 20px;
-	box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+	box-shadow: 0 8px 32px var(--shadow);
 	padding: 1.2rem 1.1rem 1.1rem 1.1rem;
 	max-width: 420px;
 	width: 100%;
 	text-align: center;
 	position: relative;
+	animation: fadeInUp 0.8s ease-out;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .cr-logo {
 	width: 100%;
 	max-width: 260px;
-	margin-bottom: 1.2rem;
-	filter: drop-shadow(0 2px 8px #636e72);
+	margin: 0 auto 1.2rem auto;
+	display: block;
+	filter: drop-shadow(0 2px 8px rgba(99,110,114,0.7));
 }
 .cr-title {
 	font-family: 'Supercell Magic', 'Arial Black', Arial, sans-serif;
 	font-size: 2.1rem;
-	color: #2363b4;
+	color: var(--accent);
 	font-weight: 900;
 	margin-bottom: 0.5rem;
 	letter-spacing: 1px;
 	text-shadow: 0 2px 0 #fff, 0 4px 8px #b2bec3;
+	text-transform: uppercase;
+}
+.cr-title {
+    letter-spacing: 2px;
 }
 .cr-desc {
-	color: #636e72;
+	color: var(--muted);
 	font-size: 1.1rem;
 	margin-bottom: 2rem;
+	line-height: 1.6;
 }
-.cr-menu {
-	display: flex;
-	flex-direction: column;
-	gap: 1.1rem;
-	margin-bottom: 1.5rem;
-}
-.cr-btn {
+.cr-btn { 
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -64,29 +74,84 @@
 	padding: 0.85rem 1.2rem;
 	border-radius: 12px;
 	text-decoration: none;
-	box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+	box-shadow: 0 2px 8px var(--shadow);
 	transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 	border: none;
+	position: relative;
+	overflow: hidden;
 }
-.cr-btn-blue { background: #2363b4; color: #fff; }
-.cr-btn-blue:hover { background: #1b4a8a; }
-.cr-btn-green { background: #00b894; color: #fff; }
-.cr-btn-green:hover { background: #00916e; }
-.cr-btn-orange { background: #fdcb6e; color: #b76e00; }
-.cr-btn-orange:hover { background: #e1a93b; color: #fff; }
-.cr-btn-purple { background: #6c5ce7; color: #fff; }
-.cr-btn-purple:hover { background: #4834d4; }
+.cr-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-45deg);
+    transition: left 0.3s ease;
+    z-index: 1;
+}
+.cr-btn:hover::after {
+    left: 100%;
+}
+.cr-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.cr-btn-blue { background: linear-gradient(90deg, var(--accent) 0%, #1a7fd6 100%); color: #fff; }
+.cr-btn-blue:hover { filter: brightness(0.95); }
+.cr-btn-green { background: linear-gradient(90deg, #2ecc71 0%, #10ac84 100%); color: #fff; }
+.cr-btn-green:hover { filter: brightness(0.95); }
+.cr-btn-orange { background: linear-gradient(90deg, var(--accent-2) 0%, #e6a23c 100%); color: #8a5a00; }
+.cr-btn-orange:hover { filter: brightness(0.95); color: #fff; }
+.cr-btn-purple { background: linear-gradient(90deg, #6c5ce7 0%, #5a47d4 100%); color: #fff; }
+.cr-btn-purple:hover { filter: brightness(0.95); }
 .cr-btn-icon {
 	width: 36px;
 	height: 36px;
 	border-radius: 8px;
-	background: #fff;
+	background: var(--surface);
 	box-shadow: 0 1px 4px rgba(44,62,80,0.10);
 }
+
+/* Removed background color usage */
 .cr-footer {
 	margin-top: 1.5rem;
 	color: #b2bec3;
 	font-size: 1rem;
+}
+
+/* Animazione di ingresso per app-home */
+:host {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Miglioramento layout */
+.cr-home-bg {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Centro il menu cr-menu all'interno del contenitore */
+.cr-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
 /* Responsive tweaks */
